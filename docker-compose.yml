@@ -1,0 +1,35 @@
+services:
+  app:
+    container_name: momo-container
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: release
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+
+  dev:
+    container_name: momo-container-dev
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: build
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/usr/src/app:delegated
+      - node_modules:/usr/src/app/node_modules
+    environment:
+      - NODE_ENV=development
+    command: ["bun", "run", "dev"]
+    restart: unless-stopped
+
+volumes:
+  node_modules: # Define the named volume here
+
+networks:
+  default:
+    name: momo-network
