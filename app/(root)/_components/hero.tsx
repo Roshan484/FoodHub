@@ -29,7 +29,7 @@ const Hero = () => {
 									className="w-full sm:w-auto"
 									asChild
 								>
-									<Link href={"/resturants"}>View Restaurants</Link>
+									<Link href={"/restaurants"}>View Restaurants</Link>
 								</Button>
 							</div>
 						</div>

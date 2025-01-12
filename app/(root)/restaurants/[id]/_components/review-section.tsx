@@ -17,7 +17,7 @@ export function ReviewSection({ reviews }: ReviewSectionProps) {
 		reviews.reduce((acc, review) => acc + review.rating, 0) / reviews.length;
 
 	return (
-		<section className="mb-12">
+		<section className="mb-12 mt-3">
 			<h2 className="text-3xl font-semibold mb-6">Customer Reviews</h2>
 			<div className="flex items-center mb-6">
 				<div

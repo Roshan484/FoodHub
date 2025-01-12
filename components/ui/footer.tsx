@@ -4,16 +4,16 @@ import MaxWidthWrapper from "../MaxWidthWrapper";
 
 export default function Footer() {
 	return (
-		<footer className=" bg-gray-50 dark:bg-muted">
+		<footer className=" bg-gray-50 dark:bg-muted border-t border-[#444]/20 dark:border-gray-300">
 			<MaxWidthWrapper>
 				<div className="grid grid-cols-1 md:grid-cols-4 p-2 gap-8 py-4">
 					<div>
 						<h3 className="text-lg font-semibold mb-4">About FoodHub</h3>
-						<p className="mb-2">
+						<p className="mb-2 text-sm ">
 							FoodHub is Nepal&apos;s premier food delivery platform, connecting
 							food lovers with the best local restaurants.
 						</p>
-						<p>
+						<p className="text-sm">
 							Our mission is to make great food accessible to everyone, anytime,
 							anywhere.
 						</p>
@@ -118,7 +118,7 @@ export default function Footer() {
 					</div>
 				</div>
 				<div className=" border-t border-[#444] dark:border-gray-300 flex items-center justify-center w-full h-full py-3 text-center">
-					<p>
+					<p className="text-sm text-gray-600 dark:text-gray-300">
 						&copy; {new Date().getFullYear()} FoodHub Nepal. All rights
 						reserved.
 					</p>

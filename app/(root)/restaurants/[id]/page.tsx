@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import { Star, Clock, DollarSign, MapPin, Phone, Utensils } from "lucide-react";
+import { Star, Clock, DollarSign, MapPin, Phone } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { ReviewSection } from "./_components/review-section";
 import { MenuSection } from "./_components/menu-section";
@@ -144,18 +144,31 @@ export default function RestaurantPage({ params }: { params: { id: string } }) {
 	}
 
 	return (
-		<MaxWidthWrapper>
-			<div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+		<MaxWidthWrapper className="py-5">
+			<div className="grid grid-cols-1 md:grid-cols-3 gap-8 ">
 				<div className="md:col-span-2">
 					<div className="relative h-64 md:h-96 rounded-lg overflow-hidden mb-6">
 						<Image
 							src={restaurant.image}
 							alt={restaurant.name}
-							layout="fill"
-							objectFit="cover"
+							fill
+							className="object-cover"
 							priority
 						/>
 					</div>
+					<div className="mb-8">
+						<h2 className="text-2xl font-semibold mb-2">Location & Contact</h2>
+						<div className="flex items-start mb-2 text-sm font-medium">
+							<MapPin className="w-4 h-4 mr-2 " aria-hidden="true" />
+							<span>{restaurant.address}</span>
+						</div>
+						<div className="flex items-center text-sm font-medium">
+							<Phone className="w-4 h-4 mr-2" aria-hidden="true" />
+							<span>{restaurant.phone}</span>
+						</div>
+					</div>
+				</div>
+				<div>
 					<h1 className="text-3xl font-bold mb-2">{restaurant.name}</h1>
 					<div className="flex flex-wrap items-center gap-4 mb-6">
 						<Badge variant={restaurant.isOpen ? "default" : "secondary"}>
@@ -183,33 +196,20 @@ export default function RestaurantPage({ params }: { params: { id: string } }) {
 							<span>{restaurant.priceRange}</span>
 						</div>
 					</div>
-				</div>
-				<div>
 					<h2 className="text-2xl font-semibold mb-4">About Us</h2>
 					<p className="text-gray-600 dark:text-gray-300 mb-6">
 						{restaurant.description}
 					</p>
 					<h3 className="text-xl font-semibold mb-3">Features</h3>
-					<ul className="list-disc list-inside mb-6">
+					<ul className=" flex items-center flex-wrap w-full list-disc list-inside mb-6">
 						{restaurant.features.map((feature, index) => (
-							<li key={index} className="mb-2 flex items-start">
-								<Utensils className="w-5 h-5 mr-2 mt-1" aria-hidden="true" />
-								<span>{feature}</span>
+							<li key={index} className="mb-2 flex ">
+								<span className="px-2 py-1 bg-green-100 rounded-full text-sm font-medium text-green-800 mr-2">
+									{feature}
+								</span>
 							</li>
 						))}
 					</ul>
-					<h3 className="text-xl font-semibold mb-3">Awards</h3>
-					<div className="mb-8">
-						<h2 className="text-2xl font-semibold mb-4">Location & Contact</h2>
-						<div className="flex items-start mb-2">
-							<MapPin className="w-5 h-5 mr-2 mt-1" aria-hidden="true" />
-							<span>{restaurant.address}</span>
-						</div>
-						<div className="flex items-center">
-							<Phone className="w-5 h-5 mr-2" aria-hidden="true" />
-							<span>{restaurant.phone}</span>
-						</div>
-					</div>
 				</div>
 			</div>
 			<MenuSection menu={restaurant.menu} />
